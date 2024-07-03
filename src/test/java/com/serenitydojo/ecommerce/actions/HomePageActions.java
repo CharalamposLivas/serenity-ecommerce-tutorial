@@ -6,7 +6,7 @@ import net.serenitybdd.core.steps.UIInteractions;
 public class HomePageActions extends UIInteractions {
 
     @Step
-    public String getHomePageTitle(NavigationActions navigate) {
-        return navigate.getTitle();
+    public String getHomePageTitle() {
+        return getTitle();
     }
 }

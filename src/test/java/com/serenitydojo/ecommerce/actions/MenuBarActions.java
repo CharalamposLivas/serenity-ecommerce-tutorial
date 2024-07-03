@@ -8,7 +8,7 @@ import java.util.List;
 public class MenuBarActions extends UIInteractions {
 
     @Step("Read the top level menus")
-    public List<String> topLevelMenuItems(NavigationActions navigate) {
-        return navigate.findAll(".navigation a.level-top").texts();
+    public List<String> topLevelMenuItems() {
+        return findAll(".navigation a.level-top").texts();
     }
 }

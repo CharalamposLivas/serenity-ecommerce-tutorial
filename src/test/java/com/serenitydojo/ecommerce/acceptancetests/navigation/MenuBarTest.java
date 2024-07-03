@@ -3,28 +3,41 @@ package com.serenitydojo.ecommerce.acceptancetests.navigation;
 import com.serenitydojo.ecommerce.actions.HomePageActions;
 import com.serenitydojo.ecommerce.actions.MenuBarActions;
 import com.serenitydojo.ecommerce.actions.NavigationActions;
+import net.serenitybdd.annotations.Steps;
+import net.serenitybdd.core.steps.UIInteractions;
 import net.serenitybdd.junit5.SerenityJUnit5Extension;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(SerenityJUnit5Extension.class)
-class MenuBarTest {
+import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(SerenityJUnit5Extension.class)
+class MenuBarTest extends UIInteractions {
+
+    @Steps
     NavigationActions navigate;
-    MenuBarActions menuBar;
-    HomePageActions homePage;
+
+    //@Steps
+    //MenuBarActions menuBar;
+
+    //@Steps
+    //HomePageActions homePage;
 
     @Test
     void shouldDisplayTheCorrectTitle() {
-        navigate.openTheLumaApplication();
-        Assertions.assertThat(homePage.getHomePageTitle(navigate)).isEqualTo("Home Page");
+        navigate.openTheApplication();
+        waitForTitleToAppear("Home Page");
+        //assertThat(homePage.getHomePageTitle()).isEqualTo("Home Page");
+        assertThat(getTitle()).isEqualTo("Home Page");
     }
 
     @Test
     void shouldShowTheTopLevelMenuItemsOnTheHomePage() {
-        navigate.openTheLumaApplication();
-        Assertions.assertThat(menuBar.topLevelMenuItems(navigate)).contains("What's New", "Women", "Men", "Gear",
-                "Training", "Sale");
+        navigate.openTheApplication();
+        waitForTitleToAppear("Home Page");
+        //assertThat(menuBar.topLevelMenuItems()).contains("What's New", "Women", "Men", "Gear",
+        //        "Training", "Sale");
+        assertThat(findAll(".navigation a.level-top").texts()).contains("What's New", "Women", "Men",
+                "Gear", "Training", "Sale");
     }
 }

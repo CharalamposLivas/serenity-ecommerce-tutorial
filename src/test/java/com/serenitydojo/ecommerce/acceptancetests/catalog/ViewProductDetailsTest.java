@@ -17,7 +17,7 @@ class ViewProductDetailsTest {
 
     @Test
     void shouldDisplayTheProductDetails() {
-        navigate.openTheLumaApplication();
+        navigate.openTheApplication();
         productDetails.productImageWithAltValueOf("Fusion Backpack").shouldBeVisible();
         fromTheCatalog.showProductDetails("Fusion Backpack");
         Assertions.assertThat(productDetails.getProductTitle()).isEqualTo("Fusion Backpack");

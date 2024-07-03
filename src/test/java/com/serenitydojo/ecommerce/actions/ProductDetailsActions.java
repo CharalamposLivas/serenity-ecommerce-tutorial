@@ -1,11 +1,13 @@
 package com.serenitydojo.ecommerce.actions;
 
+import com.serenitydojo.ecommerce.pageobjects.ProductDetailsPage;
 import net.serenitybdd.annotations.Step;
 import net.serenitybdd.core.pages.WebElementState;
 import net.serenitybdd.core.steps.UIInteractions;
-import org.openqa.selenium.By;
 
 public class ProductDetailsActions extends UIInteractions {
+
+    ProductDetailsPage productDetailsPage;
 
     @Step("Get product title")
     public String getProductTitle() {
@@ -14,5 +16,10 @@ public class ProductDetailsActions extends UIInteractions {
 
     public WebElementState productImageWithAltValueOf(String productName) {
         return $("css:img[alt='" + productName + "']");
+    }
+
+    @Step
+    public void addToCart() {
+        productDetailsPage.addToCart();
     }
 }
